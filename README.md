@@ -1,2 +1,4 @@
-# codeNode-Semana8
-Crear endopoints GET y POST de /api/proyectos. Modificar la página /proyectos de la Semana 7. Crear una página /proyectos/nuevo con un formulario que haga POST /api/proyectos desde el cliente. Requiere un Client Component ('use client') y useState. Usar better-auth.
+# codeNode-Semana9
+Protegida la ruta /dashboard con better-auth. El usuario puede hacer login, ver su email en pantalla, y hacer logout. 
+Subido .env.example.
+Añadido un formulario de registro para crear nuevos usuarios, y mostrar en el dashboard un saludo personalizado con el nombre del usuario y el email.
