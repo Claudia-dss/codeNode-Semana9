@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export async function middleware(request: NextRequest) {
-  // better-auth guarda la sesión en esta cookie
-  const session = request.cookies.get("better-auth.session_token");
+  const session = await auth.api.getSession({
+    headers: request.headers,
+  });
 
   if (!session && request.nextUrl.pathname.startsWith("/dashboard")) {
     return NextResponse.redirect(new URL("/login", request.url));
