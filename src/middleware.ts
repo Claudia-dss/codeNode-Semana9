@@ -1,11 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export async function middleware(request: NextRequest) {
-  const session = await auth.api.getSession({
-    headers: request.headers,
-  });
+  const sessionRes = await fetch(
+    new URL("/api/auth/get-session", request.url),
+    { headers: request.headers }
+  );
+  const session = await sessionRes.json();
 
-  if (!session && request.nextUrl.pathname.startsWith("/dashboard")) {
+  if (!session?.user && request.nextUrl.pathname.startsWith("/dashboard")) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
